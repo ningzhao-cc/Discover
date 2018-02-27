@@ -194,8 +194,8 @@ public class DiscoverTest {
     }
 
     public static List<String> getV1JPIVIGroupedTypes() {
-        return asList("music", "radio", "podcasts", "news");
-        //return asList("music", "radio", "podcasts", "news", "sports");
+        //return asList("music", "radio", "podcasts", "news");
+        return asList("music", "radio", "podcasts", "news", "sports");
     }
 
     /**
@@ -282,7 +282,7 @@ public class DiscoverTest {
         String mediaTypeString = Arrays.deepToString(mediaTypes.toArray());
 
         if (mediaTypeString.contains("top sports talk")) {
-            System.out.println("get a sports from tunein");
+            System.out.println("get sports from tunein");
         }
 
     }
