@@ -30,12 +30,12 @@ public class DiscoverTest {
 
         List<String> applicableProviders = getApplicableProviders(version, product);
 
-        String provider = null; // provider can be null, can contains invalid provider
+        String provider = null; // client query param, can be multiple providers splitted by ","
         List<String> finalProvider = validProvider(applicableProviders, provider);
 
         List<String> applicableGroupedTypes = getApplicableGroupedTypes(version, product);
 
-        String type = null; // type can be null, can contains groupedType or mediaType.
+        String type = null; // client query param, can be multiple different layer types splitted by ","
         List<String> finalMediaType = validMediaType(applicableGroupedTypes, type);
 
 
