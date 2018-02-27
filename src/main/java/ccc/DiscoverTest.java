@@ -97,8 +97,8 @@ public class DiscoverTest {
 
         if (providerString.contains("npr")) {
             System.out.println("\nasynchronously call npr discover APIs");
+            getDiscoverFromNpr(mediaTypes);
         }
-
 
         return new Document();
     }
@@ -262,13 +262,13 @@ public class DiscoverTest {
         String mediaTypeString = Arrays.deepToString(mediaTypes.toArray());
 
         if (mediaTypeString.contains("songs")) {
-            System.out.println("get a list of new releases from spotify");
+            System.out.println("get new releases from spotify");
         }
         if (mediaTypeString.contains("artists")) {
             System.out.println("get followed artists from spotify");
         }
         if (mediaTypeString.contains("playlists")) {
-            System.out.println("get a list of featured playlists from spotify");
+            System.out.println("get featured playlists from spotify");
         }
     }
 
@@ -285,6 +285,16 @@ public class DiscoverTest {
             System.out.println("get a sports from tunein");
         }
 
+    }
+
+    /**
+     * for npr:
+     * rectypes.add("");
+     *
+     * @param mediaTypes
+     */
+    public static void getDiscoverFromNpr(List<String> mediaTypes) {
+        String mediaTypeString = Arrays.deepToString(mediaTypes.toArray());
     }
 
     public static Document parse(Document result, String version, String product) {
