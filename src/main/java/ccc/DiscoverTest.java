@@ -20,8 +20,8 @@ public class DiscoverTest {
         map.put("radio", asList("radio mixes", "artist radio", "public(stations)", "satellite radio", "local stations"));
         map.put("podcasts", asList("channels", "top podcasts"));
         map.put("news", asList("national", "international", "finance", "sports", "tech", "entertainment"));
+        map.put("sports", asList("top sports talk"));
     }
-
 
     public static void main(String[] args) {
 
@@ -35,7 +35,7 @@ public class DiscoverTest {
 
         List<String> applicableGroupedTypes = getApplicableGroupedTypes(version, product);
 
-        String type = "music"; // type can be null, can contains groupedType or mediaType.
+        String type = null; // type can be null, can contains groupedType or mediaType.
         List<String> finalMediaType = validMediaType(applicableGroupedTypes, type);
 
 
@@ -50,7 +50,6 @@ public class DiscoverTest {
 
         System.out.println("\nfinal results after formatting");
     }
-
 
     /**
      *
@@ -93,6 +92,7 @@ public class DiscoverTest {
 
         if (providerString.contains("tunein")) {
             System.out.println("\nasynchronously call tunein discover APIs");
+            getDiscoverFromTunein(mediaTypes);
         }
 
         if (providerString.contains("npr")) {
@@ -102,7 +102,6 @@ public class DiscoverTest {
 
         return new Document();
     }
-
 
     public static List<String> validProvider(List<String> applicableProviders, String provider) {
         if (provider == null || provider.isEmpty()) {
@@ -196,8 +195,8 @@ public class DiscoverTest {
 
     public static List<String> getV1JPIVIGroupedTypes() {
         return asList("music", "radio", "podcasts", "news");
+        //return asList("music", "radio", "podcasts", "news", "sports");
     }
-
 
     /**
      *
@@ -227,7 +226,7 @@ public class DiscoverTest {
      * currently, deezer supports "trending", "albums", "artists", "playlists", "radios", "tracks"
      *
      * 1, since we define trending as songs, so how about tracks here
-     * 2, hwo to handle radios
+     * 2, how to handle radios
      *
      * @param mediaTypes
      */
@@ -273,7 +272,20 @@ public class DiscoverTest {
         }
     }
 
-    
+    /**
+     * for tunein:
+     * rectypes.add("sports").add("podcasts").add("news").add("am").add("fm").add("talk").add("recommended");
+     *
+     * @param mediaTypes
+     */
+    public static void getDiscoverFromTunein(List<String> mediaTypes) {
+        String mediaTypeString = Arrays.deepToString(mediaTypes.toArray());
+
+        if (mediaTypeString.contains("top sports talk")) {
+            System.out.println("get a sports from tunein");
+        }
+
+    }
 
     public static Document parse(Document result, String version, String product) {
         return new Document();
